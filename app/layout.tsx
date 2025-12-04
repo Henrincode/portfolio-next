@@ -50,7 +50,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-gray-800 flex flex-row h-dvh justify-center items-center">
+      <body className="bg-gray-800 text-gray-50">
         {children}
       </body>
     </html>
