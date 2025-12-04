@@ -15,12 +15,10 @@ export const metadata: Metadata = {
     "React",
     "Next.js",
     "Node.js",
-    "Supabase"
+    "Supabase",
   ],
 
-  authors: [
-    { name: "Henrique Marques" }
-  ],
+  authors: [{ name: "Henrique Marques" }],
 
   creator: "Henrique Marques",
 
@@ -32,14 +30,14 @@ export const metadata: Metadata = {
       follow: true,
       "max-image-preview": "large",
       "max-video-preview": -1,
-      "max-snippet": -1
-    }
+      "max-snippet": -1,
+    },
   },
 
   viewport: {
     width: "device-width",
     initialScale: 1,
-    maximumScale: 1
+    maximumScale: 1,
   },
 };
 
@@ -49,10 +47,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="bg-gray-800 text-gray-50">
-        {children}
-      </body>
+    <html lang="pt-BR">
+      <body className="bg-gray-800 text-gray-50">{children}</body>
     </html>
   );
 }
