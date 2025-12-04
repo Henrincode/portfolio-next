@@ -7,7 +7,7 @@ export default function Home() {
       <div className="container flex flex-col items-center justify-center gap-3 md:gap-12 select-none font-beba md:flex-row h-dvh">
         <div className="flex flex-col items-center order-2 text-center md:order-1">
           <p className="self-end text-xl md:text-2xl font-indie">
-            Hello, world!
+            {'< Hello, world! />'}
           </p>
           <h1 className="-mt-4 md:-mt-6 text-4xl leading-normal md:text-5xl">
             Henrique Marques
