@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata, Viewport } from "next"
+import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Henrique Marques",
@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   ],
 
   authors: [{ name: "Henrique Marques" }],
-
   creator: "Henrique Marques",
 
   robots: {
@@ -33,22 +32,22 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+}
 
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
-};
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="pt-BR">
       <body className="bg-gray-800 text-gray-50">{children}</body>
     </html>
-  );
+  )
 }
