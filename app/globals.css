@@ -1,5 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Indie+Flower&family=Satisfy&display=swap');
 @import "tailwindcss";
+
+@theme inline {
+  --font-bebas: var(--font-bebas);
+  --font-indie: var(--font-indie);
+}
 
 .teste {
  animation: testee 500ms alternate infinite ;
@@ -8,24 +12,6 @@
 .container {
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.font-indie {
-  font-family: "Indie Flower", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.font-satisfy {
-  font-family: "Satisfy", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.font-bebas {
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }
 
 @keyframes testee {

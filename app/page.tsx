@@ -4,7 +4,7 @@ import Avatar from "@/public/avatar.jpeg";
 export default function Home() {
   return (
     <>
-      <div className="container flex flex-col items-center justify-center gap-3 md:gap-12 select-none font-beba md:flex-row h-dvh">
+      <div className="container flex flex-col items-center justify-center gap-3 md:gap-12 select-none md:flex-row h-dvh">
         <div className="flex flex-col items-center order-2 text-center md:order-1">
           <p className="self-end text-xl md:text-2xl font-indie">
             {'< Hello, world! />'}
