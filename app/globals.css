@@ -3,6 +3,9 @@
 @theme inline {
   --font-bebas: var(--font-bebas);
   --font-indie: var(--font-indie);
+  --font-delius: var(--font-delius);
+  --font-courier: var(--font-courier);
+  --font-concert: var(--font-concert);
 }
 
 .teste {

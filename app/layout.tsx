@@ -1,23 +1,41 @@
 import type { Metadata, Viewport } from "next"
 import "./globals.css"
-import { Poppins, Bebas_Neue, Indie_Flower } from "next/font/google"
+import { Poppins, Bebas_Neue, Indie_Flower, Delius, Courier_Prime, Concert_One } from "next/font/google"
 
-const poppins = Poppins({
+const fontPoppins = Poppins({
   subsets: ["latin"],
-  weight: ["100","200","300","400","500","600","700","800","900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
   // Poppins como global (className)
 })
 
-const bebas = Bebas_Neue({
+const fontBebas = Bebas_Neue({
   subsets: ["latin"],
   variable: "--font-bebas",
-  weight: ["400"],
+  weight: ["400"]
 })
 
-const indie = Indie_Flower({
+const fontIndie = Indie_Flower({
   subsets: ["latin"],
   variable: "--font-indie",
-  weight: ["400"],
+  weight: ["400"]
+})
+
+const fontDelius = Delius({
+  subsets: ["latin"],
+  variable: "--font-delius",
+  weight: ["400"]
+})
+
+const fontCourier = Courier_Prime({
+  subsets: ["latin"],
+  variable: "--font-courier",
+  weight: ["400", "700"]
+})
+
+const fontConcert = Concert_One({
+  subsets: ["latin"],
+  variable: "--font-concert",
+  weight: ["400"]
 })
 
 export const metadata: Metadata = {
@@ -62,7 +80,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`${poppins.className} ${bebas.variable} ${indie.variable}`}>
+    <html lang="pt-BR" className={`${fontPoppins.className} ${fontBebas.variable} ${fontIndie.variable} ${fontDelius.variable} ${fontCourier.variable} ${fontConcert.variable}`}>
       <body className="bg-gray-800 text-gray-50">
         {children}
       </body>
