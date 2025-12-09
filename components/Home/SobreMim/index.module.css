@@ -1,0 +1,21 @@
+@reference "tailwindcss";
+
+.page p {
+    @apply mt-4 font-extralight;
+}
+
+.page li:first-child {
+    @apply pt-0;
+}
+
+.page li:last-child {
+    @apply pb-0 border-0;
+}
+
+.page li {
+    @apply text-2xl font-extralight py-4 border-b-2 border-gray-800;
+}
+
+.page li span {
+    @apply font-bold;
+}
