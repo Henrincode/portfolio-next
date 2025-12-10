@@ -1,14 +1,16 @@
 type props = {
-    titulo?: String
-    subTitulo?: String
+    titulo?: string
+    subTitulo?: string
 }
 
 export default function TituloSecao({ titulo = "Título", subTitulo }: props) {
     return (
-        < div className="relative flex mb-10 flex-col items-center justify-center font-bold select-none">
+        < div className="relative flex flex-col items-center justify-center pb-10 font-bold select-none">
             {subTitulo && (
                 <>
-                    <h3 className="text-9xl leading-normal text-gray-400 opacity-10">{subTitulo.toLocaleUpperCase()}</h3>
+                    <h3 className="leading-normal text-gray-400 text-9xl opacity-10">
+                        {subTitulo.toLocaleUpperCase()}
+                    </h3>
                 </>
             )}
             <h2 className={`${subTitulo?.trim() ? "absolute" : ""} text-4xl text-gray-400 leading-normal`}>{titulo}</h2>

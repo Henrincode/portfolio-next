@@ -3,14 +3,19 @@ import TituloSecao from "@/components/Titulos/TituloSecao";
 
 export default function SobreMim() {
     return (
+
         // seção
-        <div className={`${styles.page} min-h-[800px] bg-gray-900 border-t-4 border-gray-700`}>
+        <div className={`${styles.page} pb-10 bg-gray-800 border-t-4 border-gray-700`}>
+
             {/* container */}
             <div className="container ">
+
                 {/* titulo */}
                 <TituloSecao titulo="Um pouco sobre Mim" subTitulo="sobre mim" />
+
                 {/* SobreMin e detalhes */}
                 <div className="flex flex-col md:flex-row gap-20">
+
                     {/* Sobre */}
                     <div className=" flex-1">
                         <h3 className="text-4xl font-semibold">
@@ -29,14 +34,13 @@ export default function SobreMim() {
                         </p>
 
                         <p>
-                            Pronto para colaborar em projetos que precisam de comprometimento, organização e vontade de aprender. <span className="text-accent">Vamos conversar?</span>
+                            Pronto para colaborar em projetos que precisam de comprometimento, organização e vontade de aprender.{/* <span className="text-accent">Vamos conversar?</span>*/}
                         </p>
                     </div>
 
 
                     {/* detalhes */}
-
-                    <ul>
+                    <ul className="bg-gray-900 text-gray-200 p-4 rounded-xl self-start">
                         <li>
                             <span>Cidade:</span> Americana SP
                         </li>
@@ -47,7 +51,6 @@ export default function SobreMim() {
                             <span>Idade:</span> 35 anos
                         </li>
                     </ul>
-
                 </div>
             </div>
         </div>
