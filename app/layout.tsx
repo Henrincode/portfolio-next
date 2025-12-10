@@ -1,11 +1,17 @@
 import type { Metadata, Viewport } from "next"
 import "./globals.css"
-import { Poppins, Bebas_Neue, Indie_Flower, Delius, Courier_Prime, Concert_One } from "next/font/google"
+import { Inter, Poppins, Bebas_Neue, Indie_Flower, Delius, Courier_Prime, Concert_One } from "next/font/google"
+
+const fontInter = Inter({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  // Inter como global (className)
+})
 
 const fontPoppins = Poppins({
   subsets: ["latin"],
+  variable: "--font-poppins",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
-  // Poppins como global (className)
 })
 
 const fontBebas = Bebas_Neue({
@@ -80,7 +86,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`${fontPoppins.className} ${fontBebas.variable} ${fontIndie.variable} ${fontDelius.variable} ${fontCourier.variable} ${fontConcert.variable}`}>
+    <html lang="pt-BR" className={`${fontInter.className} ${fontPoppins.variable} ${fontBebas.variable} ${fontIndie.variable} ${fontDelius.variable} ${fontCourier.variable} ${fontConcert.variable}`}>
       <body className="bg-gray-800 text-gray-50">
         {children}
       </body>

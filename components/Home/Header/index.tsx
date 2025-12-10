@@ -1,15 +1,15 @@
 import TiltEffect from "@/components/TiltEffect"
-import Button from "@/components/Buttons/Header"
+import ListaTech from "@/components/ListaTech";
 
 import Image from "next/image";
 import Avatar from "@/public/avatar.jpeg";
 
 export default function HomeHeader() {
     return (
-        <div className="bg-gray-800">
-            <div className="container flex flex-col items-center justify-center gap-3 select-none md:gap-12 h-dvh">
+        <div className="bg-zinc-900">
+            <div className="container flex flex-col items-center justify-center gselect-none h-dvh">
                 <div className="flex flex-col items-center text-center">
-                    <TiltEffect className="rounded-full" resetOnInactivityMs={600}>
+                    <TiltEffect className="rounded-full" tiltStrength={30} resetOnInactivityMs={600}>
                         <div className="bg-gray-200 p-0.5 rounded-full">
                             <Image
                                 src={Avatar}
@@ -21,23 +21,16 @@ export default function HomeHeader() {
                         </div>
                     </TiltEffect>
                     {/* <p className="self-start pl-8 text-xl leading-normal md:text-2xl font-indie">
-                {'< Hello, world! />'}
-                </p> */}
+                            {'< Hello, world! />'}
+                        </p> */}
                     <h1 className="mt-10 text-2xl font-delius">
-                        Hello World! Meu nome é Henrique Marques
+                        {"< "}Hello World!{" />"} Meu nome é Henrique Marques
                     </h1>
-                    {/* <h2 className="mt-2 text-6xl font-extrabold">
-                    Desenvolvedor Fullstack
-                </h2> */}
                     <h2 className="mt-2 font-extrabold text-8xl">
                         Dev. Fullstack
                     </h2>
-                    {/* <h3 className="mt-5 font-light">
-                    Transformo ideias em soluções digitais enquanto me especializo no Curso Técnico em Informática para Internet no SENAC, buscando oportunidades para expandir minhas habilidades e contribuir com projetos inovadores.
-                </h3> */}
-                    {/* <Button bg="green" />
-                <Button bg="green" /> */}
                 </div>
+                <ListaTech className="w-full mt-10 flex flex-row flex-wrap gap-8 justify-center" />
             </div>
         </div>
     )
