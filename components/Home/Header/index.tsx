@@ -7,7 +7,7 @@ import Particulas from "@/components/Particulas";
 
 export default function HomeHeader() {
     return (
-        <div className="bg-zinc-900">
+        <div className="bg-gray-800">
             <Particulas>
             <div className="container flex flex-col items-center justify-center select-none min-h-dvh py-10">
                 <div className="flex flex-col items-center text-center">
