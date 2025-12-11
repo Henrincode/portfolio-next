@@ -1,0 +1,16 @@
+.Particulas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.Particulas canvas {
+    position: absolute;
+    inset: 0;
+}
+
+.Particulas .children {
+    pointer-events: visibleStroke;
+    position: relative;
+    flex: 1;
+}
