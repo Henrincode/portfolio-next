@@ -12,7 +12,7 @@ import React, {
 
 import Particles from "@tsparticles/react";
 import { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/plugin-slim";
+import { loadSlim } from "@tsparticles/slim";
 
 import type { Engine, Container } from "@tsparticles/engine";
 
