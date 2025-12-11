@@ -3,10 +3,12 @@ import ListaTech from "@/components/ListaTech";
 
 import Image from "next/image";
 import Avatar from "@/public/avatar.jpeg";
+import Particulas from "@/components/Particulas";
 
 export default function HomeHeader() {
     return (
         <div className="bg-zinc-900">
+            <Particulas>
             <div className="container flex flex-col items-center justify-center select-none min-h-dvh py-10">
                 <div className="flex flex-col items-center text-center">
                     <TiltEffect className="rounded-full" tiltStrength={30} resetOnInactivityMs={600}>
@@ -32,6 +34,7 @@ export default function HomeHeader() {
                 </div>
                 <ListaTech className="w-full mt-10 flex flex-row flex-wrap gap-8 justify-center" />
             </div>
+            </Particulas>
         </div>
     )
 }
