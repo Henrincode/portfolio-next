@@ -2,10 +2,10 @@
   "autoPlay": true,
   "background": {
     "color": {
-      "value": "#"
+      "value": ""
     },
     "image": "",
-    "position": "",
+    "position": "relative",
     "repeat": "",
     "size": "",
     "opacity": 1
@@ -31,16 +31,16 @@
   "duration": 0,
   "fpsLimit": 120,
   "interactivity": {
-    "detectsOn": "window",
+    "detectsOn": "canvas",
     "events": {
       "onClick": {
         "enable": false,
         "mode": "push"
       },
       "onDiv": {
-        "selectors": [],
+        "selectors": {},
         "enable": false,
-        "mode": [],
+        "mode": {},
         "type": "circle"
       },
       "onHover": {
@@ -84,7 +84,7 @@
           "distance": 200,
           "duration": 0.4,
           "mix": false,
-          "selectors": []
+          "selectors": {}
         }
       },
       "connect": {
@@ -124,7 +124,7 @@
           "speed": 1,
           "maxSpeed": 50,
           "easing": "ease-out-quad",
-          "selectors": []
+          "selectors": {}
         }
       },
       "slow": {
@@ -223,7 +223,7 @@
       "close": true,
       "fill": true,
       "options": {},
-      "type": []
+      "type": {}
     },
     "groups": {},
     "move": {

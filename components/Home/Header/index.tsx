@@ -10,7 +10,7 @@ export default function HomeHeader() {
     return (
         <div className="bg-gray-800 relative">
             <Particulas>
-            <div className="container flex flex-col items-center justify-center aaaaselect-none min-h-dvh py-10">
+            <div className="container flex flex-col items-center justify-center select-none min-h-dvh py-10">
                 <div className="flex flex-col items-center text-center">
                     <TiltEffect className="rounded-full" tiltStrength={30} resetOnInactivityMs={600}>
                         <div className="bg-gray-200 p-0.5 rounded-full">
