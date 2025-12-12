@@ -12,7 +12,7 @@ export default function HomeHeader() {
             <Particulas>
             <div className="container flex flex-col items-center justify-center select-none min-h-dvh py-10">
                 <div className="flex flex-col items-center text-center">
-                    <TiltEffect className="rounded-full" tiltStrength={30} resetOnInactivityMs={600}>
+                    <TiltEffect tiltStrength={30} resetOnInactivityMs={600}>
                         <div className="bg-gray-200 p-0.5 rounded-full">
                             <Image
                                 src={Avatar}
@@ -27,16 +27,16 @@ export default function HomeHeader() {
                             {'< Hello, world! />'}
                         </p> */}
                     <h1 className="mt-10 text-2xl font-delius">
-                        {"< "}Hello World!{" />"} Meu nome é Henrique Marques
+                        <span className="block sm:inline">{"< "}Hello World!{" />"}</span> Meu nome é Henrique <span className="hidden sm:inline">Marques</span>
                     </h1>
-                    <h2 className="mt-2 font-extrabold text-8xl">
+                    <h2 className="mt-2 font-extrabold text-7xl sm:text-8xl">
                         Dev. Fullstack
                     </h2>
                 </div>
                 <ListaTech className="w-full mt-10 flex flex-row flex-wrap gap-8 justify-center" />
             </div>
             </Particulas>
-            <FaArrowCircleDown className="absolute bottom-2 left-1/2 -translate-x-1/2 text-4xl animate-bounce" />
+            <a href="#vermais" className="hidden md:block"><FaArrowCircleDown className="absolute bottom-2 left-1/2 -translate-x-1/2 text-4xl animate-bounce opacity-40" /></a>
         </div>
     )
 }

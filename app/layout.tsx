@@ -86,7 +86,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`${fontInter.className} ${fontPoppins.variable} ${fontBebas.variable} ${fontIndie.variable} ${fontDelius.variable} ${fontCourier.variable} ${fontConcert.variable}`}>
+    <html lang="pt-BR" className={`${fontInter.className} ${fontPoppins.variable} ${fontBebas.variable} ${fontIndie.variable} ${fontDelius.variable} ${fontCourier.variable} ${fontConcert.variable} scroll-smooth`}>
       <body className="bg-gray-800 text-gray-50">
         {children}
       </body>

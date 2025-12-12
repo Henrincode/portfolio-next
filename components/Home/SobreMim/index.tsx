@@ -14,7 +14,7 @@ export default function SobreMim() {
                 <TituloSecao titulo="Um pouco sobre Mim" subTitulo="sobre mim" />
 
                 {/* SobreMin e detalhes */}
-                <div className="flex flex-col md:flex-row gap-20">
+                <div className="flex flex-col md:flex-row gap-5">
 
                     {/* Sobre */}
                     <div className=" flex-1">
@@ -40,7 +40,7 @@ export default function SobreMim() {
 
 
                     {/* detalhes */}
-                    <ul className="bg-gray-900 text-gray-200 p-4 rounded-xl self-start">
+                    <ul className="bg-gray-900 text-gray-200 p-4 rounded-xl self-center md:self-start">
                         <li>
                             <span>Cidade:</span> Americana SP
                         </li>

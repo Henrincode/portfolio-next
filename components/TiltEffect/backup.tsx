@@ -37,9 +37,9 @@ interface TiltEffectProps {
     neonBlurRadius?: number;
 
     /** * Tempo de inatividade do mouse em milissegundos (ms).
-      * Se o mouse não se mover por esse tempo, o componente volta ao estado original (tilt: 0, 0).
-      * O valor padrão é 'null' (desativado).
-      */
+     * Se o mouse não se mover por esse tempo, o componente volta ao estado original (tilt: 0, 0).
+     * O valor padrão é 'null' (desativado).
+     */
     resetOnInactivityMs?: number | null;
 }
 
@@ -211,20 +211,17 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
     // 2. Monta a string de transformação CSS
     const transformStyle: string = `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`;
 
-    // 3. Define o estilo de filtro (incluindo o drop-shadow)
-    // Usamos um filter vazio ou 'none' para não aplicar o drop-shadow se shouldShowShadow for false.
-    // O drop-shadow replica o brilho neon, usando a sintaxe: drop-shadow(offset-x offset-y blur color)
-    const filterStyle: string = shouldShowShadow
-        ? `drop-shadow(0 0 ${neonBlurRadius}px ${neonColor})` // Sombra neon
-        : 'none'; // Importante usar 'none' ou filter vazio para remover o efeito
+    // 3. Define o estilo de sombra, usando neonBlurRadius
+    const boxShadowStyle: string = shouldShowShadow
+        ? `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 ${neonBlurRadius}px ${neonColor}`
+        : 'none';
 
     // 4. Define a transição CSS: 
     // Usa 'none' se estiver no modo 'local' e sobre o objeto, para movimento instantâneo.
     // Caso contrário, usa a transição suave para reset ou movimento global.
-    // NOTA: Trocamos 'box-shadow' por 'filter'
     const transitionStyle: string = (tiltScope === 'local' && isHovering)
         ? 'none'
-        : `transform ${transitionDuration}ms ease-out, filter ${transitionDuration}ms ease-out`;
+        : `transform ${transitionDuration}ms ease-out, box-shadow ${transitionDuration}ms ease-out`;
 
     return (
         <div
@@ -242,7 +239,7 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
             style={{
                 transform: transformStyle,
                 transition: transitionStyle,
-                filter: filterStyle, // <--- PROPRIEDADE ALTERADA DE box-shadow PARA filter
+                boxShadow: boxShadowStyle,
             }}
         >
             {children}
