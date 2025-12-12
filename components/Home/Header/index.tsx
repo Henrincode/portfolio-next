@@ -4,12 +4,13 @@ import ListaTech from "@/components/ListaTech";
 import Image from "next/image";
 import Avatar from "@/public/avatar.jpeg";
 import Particulas from "@/components/Particulas";
+import { FaArrowCircleDown } from "react-icons/fa";
 
 export default function HomeHeader() {
     return (
-        <div className="bg-gray-800">
+        <div className="bg-gray-800 relative">
             <Particulas>
-            <div className="container flex flex-col items-center justify-center select-none min-h-dvh py-10">
+            <div className="container flex flex-col items-center justify-center aaaaselect-none min-h-dvh py-10">
                 <div className="flex flex-col items-center text-center">
                     <TiltEffect className="rounded-full" tiltStrength={30} resetOnInactivityMs={600}>
                         <div className="bg-gray-200 p-0.5 rounded-full">
@@ -35,6 +36,7 @@ export default function HomeHeader() {
                 <ListaTech className="w-full mt-10 flex flex-row flex-wrap gap-8 justify-center" />
             </div>
             </Particulas>
+            <FaArrowCircleDown className="absolute bottom-2 left-1/2 -translate-x-1/2 text-4xl animate-bounce" />
         </div>
     )
 }
