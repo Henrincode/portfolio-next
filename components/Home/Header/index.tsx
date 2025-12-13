@@ -30,7 +30,7 @@ export default function HomeHeader() {
                         <span className="block sm:inline">{"< "}Hello World!{" />"}</span> Meu nome é Henrique <span className="hidden sm:inline">Marques</span>
                     </h1>
                     <h2 className="mt-2 font-extrabold text-7xl sm:text-8xl">
-                        Dev. Fullstack
+                        <span className="hidden md:inline">Dev.</span> Fullstack
                     </h2>
                 </div>
                 <ListaTech className="w-full mt-10 flex flex-row flex-wrap gap-8 justify-center" />

@@ -26,7 +26,7 @@ export default function SobreMim() {
                         </p>
 
                         <p>
-                            Tenho base autodidata em tecnologia e manutenção de computadores, e experiência consolidada em liderança e atendimento ao público — onde gerenciei equipes como supervisor de segurança em um grande shopping, lidando com equipe de vigilância, CFTV e suporte à manutenção.
+                            Tenho base autodidata em tecnologia e manutenção de computadores, e experiência consolidada em liderança e atendimento ao público, onde gerenciei equipes como supervisor de segurança em um grande shopping, lidando com equipe de vigilância, CFTV e suporte à manutenção.
                         </p>
 
                         <p>
@@ -45,7 +45,7 @@ export default function SobreMim() {
                             <span>Cidade:</span> Americana SP
                         </li>
                         <li>
-                            <span>E-Mail:</span> spellctro@gmail.com
+                            <span>E-Mail:</span> henrincode@gmail.com
                         </li>
                         <li>
                             <span>Idade:</span> 35 anos

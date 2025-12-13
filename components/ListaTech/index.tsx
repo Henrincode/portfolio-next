@@ -42,7 +42,7 @@ export default function ListaTech({ className }: props) {
         <div className={className}>
             {techs.map(({ nome, icone: Icone }, idx) => (
                 <TiltEffect key={idx} tiltScope="global" tiltStrength={30} resetOnInactivityMs={600}>
-                    <div className="flex flex-col items-center justify-center bg-gray-950/30 w-20 h-20 rounded-lg select-none lg:backdrop-blur">
+                    <div className="flex flex-col items-center justify-center bg-gray-900/70 w-20 h-20 rounded-lg select-none">
                         <Icone size={iconesTamanho} />
                         <p className="text-white text-[12px] mt-2">{nome}</p>
                     </div>
