@@ -1,27 +1,32 @@
 import TiltEffect from "@/components/TiltEffect"
 
 import { IoLogoFigma, IoLogoGithub, IoLogoVercel } from "react-icons/io5";
-import { FaBootstrap, FaCss3Alt, FaDatabase, FaGitAlt, FaHtml5, FaNodeJs, FaNpm, FaReact, FaWordpress } from "react-icons/fa";
+import { FaBootstrap, FaCpanel, FaCss3Alt, FaDatabase, FaGitAlt, FaHtml5, FaNodeJs, FaNpm, FaReact, FaWordpress } from "react-icons/fa";
 import { RiJavascriptFill, RiNextjsFill, RiSupabaseFill, RiTailwindCssFill } from "react-icons/ri";
 import { GrMysql } from "react-icons/gr";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { SiMongodb } from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
 
 
 
 const iconesTamanho = 30
 const techs = [
+    { nome: "VSCode", icone: VscVscode },
     { nome: "Figma", icone: IoLogoFigma },
     { nome: "Git", icone: FaGitAlt },
     { nome: "Github", icone: IoLogoGithub },
     { nome: "HTML5", icone: FaHtml5 },
     { nome: "CSS", icone: FaCss3Alt },
-    { nome: "JavaScript", icone: RiJavascriptFill },
+    { nome: "Tailwind", icone: RiTailwindCssFill },
     { nome: "Bootstrap", icone: FaBootstrap },
+    { nome: "JavaScript", icone: RiJavascriptFill },
+    { nome: "CPanel", icone: FaCpanel },
     { nome: "Wordpress", icone: FaWordpress },
     { nome: "NodeJS", icone: FaNodeJs },
     { nome: "NPM", icone: FaNpm },
     { nome: "React", icone: FaReact },
+    { nome: "NextJS", icone: RiNextjsFill },
     { nome: "Vercel", icone: IoLogoVercel },
     { nome: "Supabase", icone: RiSupabaseFill },
     { nome: "SQL", icone: FaDatabase },
@@ -29,8 +34,6 @@ const techs = [
     { nome: "MySQL", icone: GrMysql },
     { nome: "PostgreSQL", icone: BiLogoPostgresql },
     { nome: "MongoDB", icone: SiMongodb },
-    { nome: "NextJS", icone: RiNextjsFill },
-    { nome: "Tailwind", icone: RiTailwindCssFill },
 ]
 
 type props = {
