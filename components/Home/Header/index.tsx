@@ -8,11 +8,11 @@ import { FaArrowCircleDown } from "react-icons/fa";
 
 export default function HomeHeader() {
     return (
-        <div className="bg-gray-800 relative">
+        <div className="bg-gray-800 relative seguir-header">
             <Particulas>
             <div className="container flex flex-col items-center justify-center select-none min-h-dvh py-10">
                 <div className="flex flex-col items-center text-center">
-                    <TiltEffect resetOnInactivityMs={600}>
+                    <TiltEffect globalTrackingSelector={".seguir-header"} resetOnInactivityMs={600}>
                         <div className="bg-gray-200 p-0.5 rounded-full">
                             <Image
                                 src={Avatar}
