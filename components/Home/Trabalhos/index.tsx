@@ -1,3 +1,4 @@
+import TiltOrDiv from "@/components/TiltEffect/TiltOrDiv";
 import TituloSecao from "@/components/Titulos/TituloSecao";
 import { FaGithub } from "react-icons/fa";
 import { FaEarthAmericas } from "react-icons/fa6";
@@ -31,18 +32,16 @@ export default function Trabalhos() {
                 {/* Container lista */}
                 <div className="flex flex-row justify-center flex-wrap gap-[30px]">
                     {projetos.map((p, i) => (
-                        <div key={i} className="flex flex-col bg-gray-700 md:w-[calc((100%/3)-20px)] p-2 rounded-xl">
+                        <TiltOrDiv key={i} className="flex flex-col bg-gray-700 md:w-[calc((100%/3)-20px)] p-2 rounded-xl hover:z-10 select-none">
                             {/* img */}
                             <div className="relative">
                                 <img className="block w-full rounded-xl" src={p.img} alt={`Print do projeto ${p.nome}`} />
                                 {/* techs */}
-                                <div className="absolute bottom-0 h-full w-full rounded-xl hover:backdrop-blur duration-300 select-none group">
-                                    <ul className="absolute bottom-2 w-full flex flex-row flex-wrap justify-center gap-2">
-                                        {p.techs.map((te, i) => (
-                                            <li key={i} className="text-[12px] p-2 bg-gray-800/50 group-hover:bg-gray-800 rounded-xl duration-1000">{te}</li>
-                                        ))}
-                                    </ul>
-                                </div>
+                                <ul className="absolute bottom-2 w-full flex flex-row flex-wrap justify-center gap-2">
+                                    {p.techs.map((te, i) => (
+                                        <li key={i} className="text-[12px] p-2 bg-gray-800/50 rounded-xl duration-1000">{te}</li>
+                                    ))}
+                                </ul>
                             </div>
                             {/* titulo */}
                             <div className="mt-2 text-xl font-bold text-center">{p.nome}</div>
@@ -51,13 +50,13 @@ export default function Trabalhos() {
                             {/* links */}
                             <ul className="mt-2 flex flex-row justify-center gap-2 select-none">
                                 <a className="flex-1" href={p.codigo} target="_blank" draggable="false">
-                                    <li className="flex flex-row justify-center items-center gap-2 text-xl bg-sky-800 hover:bg-sky-400 duration-200 p-2 rounded-md"><FaGithub className="text-2xl" /> CÓDIGO</li>
+                                    <li className="flex flex-row justify-center items-center gap-2 text-xl bg-sky-800 hover:bg-sky-400 duration-200 ease-in-out p-2 rounded-md"><FaGithub className="text-2xl" /> CÓDIGO</li>
                                 </a>
                                 <a className="flex-1" href={p.site} target="_blank" draggable="false">
-                                    <li className="flex flex-row justify-center items-center gap-2 text-xl bg-green-800 hover:bg-green-400 duration-200 p-2 rounded-md"><FaEarthAmericas className="text-2xl" /> SITE</li>
+                                    <li className="flex flex-row justify-center items-center gap-2 text-xl bg-green-800 hover:bg-green-400 duration-200 ease-in-out p-2 rounded-md"><FaEarthAmericas className="text-2xl" /> SITE</li>
                                 </a>
                             </ul>
-                        </div>
+                        </TiltOrDiv>
                     ))}
                 </div>
             </div>

@@ -52,7 +52,7 @@ function Particulas({ children, className }: ParticulasProps) {
         />
       )}
       {/* 4. Conteúdo sobreposto */}
-      <div className={styles.children + " container"}>{children}</div>
+      <div className={styles.children}>{children}</div>
     </div>
   );
 }

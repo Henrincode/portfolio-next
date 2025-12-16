@@ -10,7 +10,7 @@
 }
 
 .Particulas .children {
-    pointer-events: visibleStroke;
+    /* pointer-events: visibleStroke; */
     position: relative;
     flex: 1;
 }

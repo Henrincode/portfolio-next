@@ -12,7 +12,7 @@ export default function HomeHeader() {
             <Particulas>
             <div className="container flex flex-col items-center justify-center select-none min-h-dvh py-10">
                 <div className="flex flex-col items-center text-center">
-                    <TiltEffect tiltStrength={30} resetOnInactivityMs={600}>
+                    <TiltEffect resetOnInactivityMs={600}>
                         <div className="bg-gray-200 p-0.5 rounded-full">
                             <Image
                                 src={Avatar}
