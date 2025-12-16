@@ -31,7 +31,7 @@ export default function TiltOrDiv({ children, className }: Props) {
   }
 
   return canUseTilt ? (
-    <TiltEffect tiltScope="global" resetOnInactivityMs={600} neonBlurRadius={10} className={className}>
+    <TiltEffect tiltScope="local" resetOnInactivityMs={600} neonBlurRadius={10} className={className}>
       {children}
     </TiltEffect>
   ) : (
