@@ -45,8 +45,8 @@ const fontConcert = Concert_One({
 })
 
 export const metadata: Metadata = {
-  title: "Henrique Marques",
-  description: "Dev Fullstack",
+  title: "Henrique Marques - Dev Fullstack",
+  description: "Portfólio para apresentar meus trabalhos e desenvolvimento no curso do SENAC - Técnico de Informática para Internet - FULLSTACK",
   keywords: [
     "Henrique Marques",
     "Desenvolvedor Fullstack",
