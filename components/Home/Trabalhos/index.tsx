@@ -3,14 +3,14 @@ import { FaGithub } from "react-icons/fa";
 import { FaEarthAmericas } from "react-icons/fa6";
 
 const projetos = [
-    {
-        nome: "Rastro Urbano", techs: ["HTML", "CSS", "JavaScript"], img: "./site-rastro.png", codigo: "https://github.com/henrincode/rastro-urbano/", site: "https://henrincode.github.io/rastro-urbano/",
-        descricao: "Projeto frontend de uma loja de roupas e acessórios com intuito de treianr HTML + CSS"
-    },
     // {
-    //     nome: "Confeitariana", techs: ["HTML", "CSS", "JavaScript", "React"], img: "./site-confeitariana.png", codigo: "https://github.com/Henrincode/confeitariana", site: "https://confeitariana.vercel.app/",
-    //     descricao: "Projeto frontend integrador da etapa frontend do curso T.I p/ Internet SENAC"
+    //     nome: "Rastro Urbano", techs: ["HTML", "CSS", "JavaScript"], img: "./site-rastro.png", codigo: "https://github.com/henrincode/rastro-urbano/", site: "https://henrincode.github.io/rastro-urbano/",
+    //     descricao: "Projeto frontend de uma loja de roupas e acessórios com intuito de treianr HTML + CSS"
     // },
+    {
+        nome: "Confeitariana", techs: ["HTML", "CSS", "JavaScript", "React"], img: "./site-confeitariana.png", codigo: "https://github.com/Henrincode/confeitariana", site: "https://confeitariana.vercel.app/",
+        descricao: "Projeto frontend integrador da etapa frontend do curso T.I p/ Internet SENAC"
+    },
     {
         nome: "Mural-Senac", techs: ["HTML", "CSS", "JavaScript", "Supabase"], img: "./site-mural.png", codigo: "https://github.com/Henrincode/mural-servicos", site: "https://henrincode.github.io/mural-servicos/",
         descricao: "Projeto vencedor do Hackaton do SENAC, objetivo era digitalizar um mural de ofertas e serviços do corredor do SENAC"
@@ -29,9 +29,9 @@ export default function Trabalhos() {
             <div className="container">
                 <TituloSecao titulo="Projetos prondos / em andamento" subTitulo="Trabalhos" />
                 {/* Container lista */}
-                <div className="container flex flex-row justify-center flex-wrap gap-[30px]">
+                <div className="flex flex-row justify-center flex-wrap gap-[30px]">
                     {projetos.map((p, i) => (
-                        <div key={i} className="flex flex-col bg-gray-700 w-[calc((100%/3)-20px)] p-2 rounded-xl">
+                        <div key={i} className="flex flex-col bg-gray-700 md:w-[calc((100%/3)-20px)] p-2 rounded-xl">
                             {/* img */}
                             <div className="relative">
                                 <img className="block w-full rounded-xl" src={p.img} alt={`Print do projeto ${p.nome}`} />

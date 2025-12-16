@@ -21,7 +21,7 @@ const techs = [
     { nome: "Tailwind", icone: RiTailwindCssFill },
     { nome: "Bootstrap", icone: FaBootstrap },
     { nome: "JavaScript", icone: RiJavascriptFill },
-    { nome: "CPanel", icone: FaCpanel },
+    // { nome: "CPanel", icone: FaCpanel },
     { nome: "Wordpress", icone: FaWordpress },
     { nome: "NodeJS", icone: FaNodeJs },
     { nome: "NPM", icone: FaNpm },
