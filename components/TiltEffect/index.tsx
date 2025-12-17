@@ -47,6 +47,11 @@ interface TiltEffectProps {
       * Se for null (padrão), ele segue o mouse em qualquer lugar do site.
       */
     globalTrackingSelector?: string | null;
+
+    /** * Se verdadeiro (padrão), desativa o efeito de inclinação 
+      * automaticamente em dispositivos móveis ou com tela sensível ao toque. 
+      */
+    disableOnTouchOrMobile?: boolean;
 }
 
 /**
@@ -63,7 +68,8 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
     neonVisibility = 'onHover', // Padrão: brilho aparece no hover
     neonBlurRadius = 40, // Padrão: 40 pixels de desfoque
     resetOnInactivityMs = null, // Padrão: desativado
-    globalTrackingSelector = null // Novo padrão: rastreamento global simples
+    globalTrackingSelector = null, // Novo padrão: rastreamento global simples
+    disableOnTouchOrMobile = true, // NOVO: Desativa em touch por padrão
 }) => {
     // Estado para armazenar os valores de inclinação (rotação X e Y)
     const [tilt, setTilt] = useState<{ x: number, y: number }>({ x: 0, y: 0 });
@@ -71,6 +77,8 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
     const [isHovering, setIsHovering] = useState<boolean>(false);
     // Estado para controlar se o elemento externo (via selector) está sendo hoverado
     const [isExternalTargetHovered, setIsExternalTargetHovered] = useState<boolean>(false);
+    // NOVO: Estado para detectar se é um dispositivo touch (usado para desativar o efeito)
+    const [isTouchDevice, setIsTouchDevice] = useState<boolean | null>(null);
     
     // Referência tipada para o elemento DOM div
     const cardRef = useRef<HTMLDivElement>(null);
@@ -79,12 +87,18 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
     // Referência para o elemento DOM externo que estamos rastreando (seletor)
     const externalTargetRef = useRef<Element | null>(null);
 
+    // Determina se o efeito deve estar ativo
+    // O efeito está ativo se NÃO for um dispositivo touch E a prop 'disableOnTouchOrMobile' for verdadeira,
+    // OU se a detecção de touch ainda não terminou (isTouchDevice === null),
+    // OU se a prop 'disableOnTouchOrMobile' for falsa (permitindo em touch).
+    const isTiltActive = isTouchDevice === null || !(isTouchDevice && disableOnTouchOrMobile);
+
     // --- Funções de Inatividade do Mouse ---
 
     /**
-     * Reseta o estado de inclinação para o original (0, 0).
-     * Também garante que qualquer temporizador pendente seja limpo.
-     */
+      * Reseta o estado de inclinação para o original (0, 0).
+      * Também garante que qualquer temporizador pendente seja limpo.
+      */
     const resetTilt = () => {
         setTilt({ x: 0, y: 0 });
         if (inactivityTimerRef.current) {
@@ -94,8 +108,8 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
     };
 
     /**
-     * Agenda ou reinicia o temporizador de reset por inatividade.
-     */
+      * Agenda ou reinicia o temporizador de reset por inatividade.
+      */
     const scheduleReset = () => {
         if (!resetOnInactivityMs || resetOnInactivityMs <= 0) return;
 
@@ -114,11 +128,11 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
     // --- Funções de Cálculo de Inclinação ---
     
     /**
-     * Calcula a inclinação no modo LOCAL (baseado na posição do mouse dentro do COMPONENTE).
-     * Este handler é anexado diretamente ao componente (onMouseMove).
-     */
+      * Calcula a inclinação no modo LOCAL (baseado na posição do mouse dentro do COMPONENTE).
+      * Este handler é anexado diretamente ao componente (onMouseMove).
+      */
     const calculateLocalTilt = (event: MouseEvent<HTMLDivElement>): void => {
-        if (!cardRef.current) return;
+        if (!cardRef.current || !isTiltActive) return;
 
         const rect = cardRef.current.getBoundingClientRect();
         const width = rect.width;
@@ -141,17 +155,57 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
         scheduleReset(); // Reinicia o temporizador de inatividade a cada movimento
     };
 
-    // --- Efeito para Listeners Globais e Limpeza ---
+    // --- Handlers de Hover Locais (onMouseEnter/onMouseLeave do componente) ---
 
+    const handleMouseEnter = () => setIsHovering(true);
+
+    const handleMouseLeave = () => {
+        setIsHovering(false);
+        // Se o escopo for LOCAL, o tilt deve ser resetado ao sair.
+        if (tiltScope === 'local') {
+            resetTilt(); // Chama resetTilt que também limpa o timer
+        }
+        // Se o escopo for GLOBAL, o tilt continua a ser atualizado pelo listener do window (ou é resetado ao sair do selector).
+    };
+
+    // --- Efeitos para Detecção de Dispositivo e Listeners Globais ---
+
+    // Efeito 1: Detecção de Dispositivo (Roda apenas no mount)
     useEffect(() => {
-        // Função de limpeza do temporizador
+        // Checa se as APIs de janela estão disponíveis
+        if (typeof window === 'undefined') {
+            setIsTouchDevice(false);
+            return;
+        }
+
+        // Detecta se o ponteiro principal é impreciso (touch/caneta)
+        const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+        // Detecta eventos de toque ou se há pontos de toque máximos (fallback)
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        // Considera touch se tiver ponteiro grosso OU se houver eventos de toque
+        setIsTouchDevice(isCoarsePointer || isTouch);
+
+    }, []);
+
+    // Efeito 2: Listeners Globais e Lógica de Cleanup (Depende de isTiltActive e isTouchDevice)
+    useEffect(() => {
         const clearInactivityTimer = () => {
             if (inactivityTimerRef.current) {
                 clearTimeout(inactivityTimerRef.current);
                 inactivityTimerRef.current = null;
             }
         };
-        
+
+        // Se o tilt não estiver ativo (devido a ser um dispositivo touch e a prop estar em true),
+        // reseta o tilt e não anexa listeners.
+        if (!isTiltActive) {
+            resetTilt(); 
+            return () => {
+                clearInactivityTimer();
+            };
+        }
+
         // --- Handler de Movimento Global (Anexado ao Window) ---
         const handleGlobalMouseMove = (event: globalThis.MouseEvent): void => {
             if (tiltScope !== 'global' || !cardRef.current) return;
@@ -160,14 +214,11 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
             const isSelectiveTrackingActive = !!globalTrackingSelector;
 
             if (isSelectiveTrackingActive && !isExternalTargetHovered) {
-                // Garante que o tilt seja resetado quando o rastreamento seletivo estiver ativo 
-                // e o mouse estiver fora do elemento alvo (evita o congelamento).
                 resetTilt(); 
                 return; // Impede qualquer cálculo
             }
 
-            // --- Lógica de Cálculo de Inclinação Global (Se o rastreamento estiver ativo) ---
-            
+            // --- Lógica de Cálculo de Inclinação Global ---
             const rect = cardRef.current.getBoundingClientRect();
 
             // Calcula a posição do mouse relativa ao centro do COMPONENTE na viewport.
@@ -187,29 +238,24 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
         };
 
         // --- Anexar Listeners ---
-        
         if (tiltScope === 'global') {
             // Anexa o listener de movimento global à janela
             window.addEventListener('mousemove', handleGlobalMouseMove as EventListener);
 
             // Lógica para rastreamento seletivo global
             if (globalTrackingSelector) {
-                // Tenta encontrar o elemento alvo
                 externalTargetRef.current = document.querySelector(globalTrackingSelector);
 
                 if (externalTargetRef.current) {
                     
-                    // === CORREÇÃO DE BUG: Verifica se o mouse JÁ está sobre o elemento no mount ===
-                    // Isso resolve o problema de inicialização quando o cursor já está sobre o elemento.
+                    // Verifica se o mouse JÁ está sobre o elemento no mount
                     if (externalTargetRef.current.matches(':hover')) {
                         setIsExternalTargetHovered(true);
                     }
-                    // ==============================================================================
 
                     const handleExternalEnter = () => setIsExternalTargetHovered(true);
                     const handleExternalLeave = () => {
                         setIsExternalTargetHovered(false);
-                        // Ao sair do alvo, o tilt deve ser resetado
                         resetTilt();
                     };
 
@@ -224,7 +270,6 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
                         clearInactivityTimer();
                     };
                 } else {
-                    // Se o seletor for inválido, cai no comportamento de rastreamento global simples
                     console.error(`TiltEffect: Seletor '${globalTrackingSelector}' não encontrado. O rastreamento seletivo não funcionará.`);
                 }
             }
@@ -241,26 +286,20 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
             };
         }
 
-    }, [tiltScope, tiltStrength, isHovering, resetOnInactivityMs, globalTrackingSelector, isExternalTargetHovered]); 
-
-    // --- Handlers de Hover Locais (onMouseEnter/onMouseLeave do componente) ---
-
-    const handleMouseEnter = () => setIsHovering(true);
-
-    const handleMouseLeave = () => {
-        setIsHovering(false);
-        // Se o escopo for LOCAL, o tilt deve ser resetado ao sair.
-        if (tiltScope === 'local') {
-            resetTilt(); // Chama resetTilt que também limpa o timer
-        }
-        // Se o escopo for GLOBAL, o tilt continua a ser atualizado pelo listener do window (ou é resetado ao sair do selector).
-    };
+    }, [
+        tiltScope, 
+        tiltStrength, 
+        isHovering, 
+        resetOnInactivityMs, 
+        globalTrackingSelector, 
+        isExternalTargetHovered, 
+        isTiltActive // Dependência NOVO
+    ]); 
 
 
     // --- Estilos Dinâmicos ---
 
     // 1. Determina se o brilho neon deve estar visível (usa neonVisibility)
-    // CORRIGIDO: A sombra/neon agora depende apenas de 'isHovering' (hover local) quando neonVisibility é 'onHover'.
     const shouldShowShadow = neonVisibility === 'always' || (neonVisibility === 'onHover' && isHovering);
 
     // 2. Monta a string de transformação CSS
@@ -277,6 +316,27 @@ const TiltEffect: React.FC<TiltEffectProps> = ({
         ? 'none'
         : `transform ${transitionDuration}ms ease-out, filter ${transitionDuration}ms ease-out`;
 
+    // NOVO: Evita mismatch de hidratação (SSR vs Client)
+    if (isTouchDevice === null) {
+        return (
+            <div className={`rounded-2xl ${className}`}>
+                {children}
+            </div>
+        );
+    }
+    
+    // NOVO: Se o tilt não estiver ativo (mobile/touch detectado e desabilitado por prop),
+    // renderiza uma div simples, ignorando todos os listeners e transformações.
+    if (!isTiltActive) {
+        return (
+            <div className={`rounded-2xl ${className}`}>
+                {children}
+            </div>
+        );
+    }
+
+
+    // Renderização do componente com Tilt ativo
     return (
         <div
             ref={cardRef}
