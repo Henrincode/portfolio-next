@@ -42,7 +42,7 @@ export default function Trabalhos() {
                 <div className="flex flex-row justify-center flex-wrap gap-[30px]">
                     {projetos.map((p, i) => (
                         
-                        <TiltEffect key={i} className="flex flex-col bg-gray-700 md:w-[calc((100%/3)-20px)] p-2 rounded-xl hover:z-10 select-none group/trabalho" disableOnTouchOrMobile resetOnInactivityMs={600} tiltStrength={3} tiltScope="local" neonBlurRadius={10}>
+                        <TiltEffect key={i} className="flex flex-col bg-gray-700 md:w-[calc((100%/3)-20px)] p-2 rounded-xl hover:z-10 select-none group/trabalho" disableOnTouchOrMobile tiltStrength={3} tiltScope="local" neonBlurRadius={10}>
                             {/* img */}
                             <div className="relative">
                                 <img className="block w-full rounded-xl" src={p.img} alt={`Print do projeto ${p.nome}`} />

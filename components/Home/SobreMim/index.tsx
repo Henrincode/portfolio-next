@@ -1,3 +1,4 @@
+import { FaExternalLinkAlt } from "react-icons/fa";
 import styles from "./index.module.css"
 import TituloSecao from "@/components/Titulos/TituloSecao";
 
@@ -14,7 +15,7 @@ export default function SobreMim() {
                 <TituloSecao titulo="Um pouco sobre Mim" subTitulo="sobre mim" />
 
                 {/* SobreMin e detalhes */}
-                <div className="flex flex-col md:flex-row gap-5">
+                <div className="flex flex-col md:flex-row gap-10 md:gap-20">
 
                     {/* Sobre */}
                     <div className=" flex-1">
@@ -45,10 +46,19 @@ export default function SobreMim() {
                             <span>Cidade:</span> Americana SP
                         </li>
                         <li>
+                            <span>Idade:</span> 35 anos
+                        </li>
+                        <li>
                             <span>E-Mail:</span> henrincode@gmail.com
                         </li>
                         <li>
-                            <span>Idade:</span> 35 anos
+                            <span>Whatsapp:</span> <a className="text-blue-300 hover:text-blue-500" href="https://wa.me/5519988441020?text=Ol%C3%A1%2C%20Henrique%21%20Conheci%20seu%20perfil%20atrav%C3%A9s%20do%20seu%20site%2Fportf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank">19 9 8844-1020 <FaExternalLinkAlt size={12} className="inline align-top" /></a>
+                        </li>
+                        <li>
+                            <span>LinkedIn:</span> <a className="text-blue-300 hover:text-blue-500" href="https://www.linkedin.com/in/henrymarques/" target="_blank">@henrymarques <FaExternalLinkAlt size={12} className="inline align-top" /></a>
+                        </li>
+                        <li>
+                            <span>GitHub:</span> <a className="text-blue-300 hover:text-blue-500" href="https://github.com/Henrincode/" target="_blank">@Henrincode <FaExternalLinkAlt size={12} className="inline align-top" /></a>
                         </li>
                     </ul>
                 </div>
