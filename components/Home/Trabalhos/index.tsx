@@ -1,5 +1,4 @@
 import TiltEffect from "@/components/TiltEffect";
-import TiltOrDiv from "@/components/TiltEffect/TiltOrDiv";
 import TituloSecao from "@/components/Titulos/TituloSecao";
 import { FaGithub } from "react-icons/fa";
 import { FaEarthAmericas } from "react-icons/fa6";
