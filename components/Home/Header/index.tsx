@@ -12,7 +12,8 @@ export default function HomeHeader() {
             <Particulas>
             <div className="container flex flex-col items-center justify-center select-none min-h-dvh py-10">
                 <div className="flex flex-col items-center text-center">
-                    <TiltEffect globalTrackingSelector={".seguir-header"} resetOnInactivityMs={600}>
+                    <TiltEffect tiltScope="local" tiltStrength={15} neonBlurRadius={0}>
+                    <TiltEffect globalTrackingSelector={".seguir-header"} neonBlurRadius={20} resetOnInactivityMs={600}>
                         <div className="bg-gray-200 p-0.5 rounded-full">
                             <Image
                                 src={Avatar}
@@ -22,6 +23,7 @@ export default function HomeHeader() {
                                 draggable="false"
                             />
                         </div>
+                    </TiltEffect>
                     </TiltEffect>
                     {/* <p className="self-start pl-8 text-xl leading-normal md:text-2xl font-indie">
                             {'< Hello, world! />'}
@@ -36,7 +38,7 @@ export default function HomeHeader() {
                 <ListaTech className="w-full mt-10 flex flex-row flex-wrap gap-8 justify-center" />
             </div>
             </Particulas>
-            <a href="#vermais" className="hidden md:block"><FaArrowCircleDown className="absolute bottom-2 left-1/2 -translate-x-1/2 text-4xl animate-bounce opacity-40" /></a>
+            <a href="#vermais" className="hidden md:block"><FaArrowCircleDown className="absolute bottom-2 left-1/2 -translate-x-1/2 text-4xl animate-bounce opacity-40 hover:opacity-100" /></a>
         </div>
     )
 }

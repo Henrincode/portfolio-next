@@ -38,7 +38,7 @@ export default function Trabalhos() {
             <div className="container">
                 <TituloSecao titulo="Projetos prondos / em andamento" subTitulo="Trabalhos" />
                 {/* Container lista */}
-                <div className="flex flex-row justify-center flex-wrap gap-[30px]">
+                <div className="flex flex-row justify-center flex-wrap gap-7.5">
                     {projetos.map((p, i) => (
                         
                         <TiltEffect key={i} className="flex flex-col bg-gray-700 md:w-[calc((100%/3)-20px)] p-2 rounded-xl hover:z-10 select-none group/trabalho" disableOnTouchOrMobile tiltStrength={3} tiltScope="local" neonBlurRadius={10}>

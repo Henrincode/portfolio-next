@@ -44,11 +44,13 @@ export default function ListaTech({ className }: props) {
     return (
         <div className={className}>
             {techs.map(({ nome, icone: Icone }, idx) => (
-                <TiltEffect key={idx} globalTrackingSelector={".seguir-header"} tiltScope="global" neonBlurRadius={10} tiltStrength={30} resetOnInactivityMs={600}>
+                <TiltEffect key={idx} tiltScope="local" tiltStrength={15} neonBlurRadius={0}>
+                <TiltEffect globalTrackingSelector={".seguir-header"} tiltScope="global" neonBlurRadius={10} tiltStrength={30} resetOnInactivityMs={600}>
                     <div className="flex flex-col items-center justify-center bg-gray-900/70 w-20 h-20 rounded-lg select-none">
                         <Icone size={iconesTamanho} />
                         <p className="text-white text-[12px] mt-2">{nome}</p>
                     </div>
+                </TiltEffect>
                 </TiltEffect>
             ))}
         </div>
