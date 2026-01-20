@@ -17,7 +17,7 @@ const projetos = [
         descricao: "Outro projeto pequeno criado para exercitar manipulação do DOM com JavaScript, seletores, innerHTML e innerTEXT"
     },
     {
-        nome: "Confeitariana", techs: ["HTML", "CSS", "JavaScript", "React"], img: "./site-confeitariana.png", codigo: "https://github.com/Henrincode/confeitariana", site: "https://confeitariana.vercel.app/",
+        nome: "Confeitariana", techs: ["HTML", "CSS", "JavaScript", "React"], img: "./site-confeitariana.png", codigo: "https://github.com/Henrincode/confeitariana-react", site: "https://confeitariana-react.vercel.app/",
         descricao: "Projeto frontend integrador da etapa frontend do curso T.I p/ Internet SENAC"
     },
     {
@@ -36,7 +36,7 @@ export default function Trabalhos() {
         <div className="pb-10 bg-gray-900 border-t-4 border-gray-700 ">
             <div id="vermais"></div>
             <div className="container">
-                <TituloSecao titulo="Projetos prondos / em andamento" subTitulo="Trabalhos" />
+                <TituloSecao titulo="Projetos prontos / em andamento" subTitulo="Trabalhos" />
                 {/* Container lista */}
                 <div className="flex flex-row justify-center flex-wrap gap-7.5">
                     {projetos.map((p, i) => (
